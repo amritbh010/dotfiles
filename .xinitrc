@@ -79,11 +79,10 @@ fi
 
 ##################################################################################################################
 
+/home/void/.local/bin/newlook &
 sxhkd &
-setsid xcompmgr &
-#~/.local/bin/newlook &
-xdotool &
 wal -i /home/void/Downloads/wallpaperflare.com_wallpaper.jpg &
+setsid xcompmgr &
 feh --bg-fill /home/void/Downloads/wallpaperflare.com_wallpaper.jpg &
 exec dwm
 
