@@ -1,0 +1,22 @@
+# Increase volume
+alt + Up
+    amixer -q sset Master 5%+
+
+# Decrease volume
+alt + Down
+    amixer -q sset Master 5%-
+
+# Mute/unmute volume
+alt + m
+    amixer -q sset Master toggle
+
+
+# Increase brightness
+alt + Right     
+     backlight_control +10
+
+#  Decrease brightness
+alt + Left
+     backlight_control -10
+
+
