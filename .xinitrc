@@ -5,13 +5,34 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-# statusbar loop
 
-while true; do
 
-	xsetroot -name "$( date +"%F %R" ) | $(cat /sys/class/power_supply/BAT0/capacity)%"
-	sleep 1m    # update every minute
+##################################################################################################################
+
+# Check if memory_info is empty or contains unexpected data
+if [ -z "$memory_info" ] || ! echo "$memory_info" | grep -q "Mem:"; then
+        memory_usage="N/A"
+else
+        # Extract total and used memory from memory_info
+        total_memory=$(echo "$memory_info" | awk 'NR==2{print $2}')
+        used_memory=$(echo "$memory_info" | awk 'NR==2{print $3}')
+
+        # Calculate memory usage percentage
+        if [ "$total_memory" -ne 0 ]; then
+                memory_usage=$((used_memory * 100 / total_memory))
+        else
+                memory_usage="N/A"
+        fi
+fi
+
+        # Update the status bar with time, memory usage, and battery percentage
+xsetroot -name "$current_time | Memory : $memory_usage% | $battery_percentage%"
+
+# Sleep for 5 seconds before updating again
+sleep 5
 done &
+
+##################################################################################################################
 
 # merge in defaults and keymaps
 
@@ -56,6 +77,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+##################################################################################################################
 
 sxhkd &
 setsid xcompmgr &
@@ -64,4 +86,7 @@ xdotool &
 wal -i /home/void/Downloads/wallpaperflare.com_wallpaper.jpg &
 feh --bg-fill /home/void/Downloads/wallpaperflare.com_wallpaper.jpg &
 exec dwm
+
+
+##################################################################################################################
 
