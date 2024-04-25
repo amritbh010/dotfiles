@@ -10,13 +10,12 @@ alt + Down
 alt + m
     amixer -q sset Master toggle
 
-
 # Increase brightness
-alt + Right     
-     backlight_control +10
+alt + Right
+    backlight_control +10
 
 #  Decrease brightness
 alt + Left
-     backlight_control -10
+    backlight_control -10
 
 
