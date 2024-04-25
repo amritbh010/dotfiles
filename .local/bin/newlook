@@ -1,4 +1,4 @@
 #!/bin/bash
-
-xdotool key super+F5
+sleep 0.1
+xdotool key --clearmodifiers "Super_L+F5"
 
