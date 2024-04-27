@@ -9,6 +9,16 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 ##################################################################################################################
 
+while true; do
+# Get current date and time
+current_time=$(date +"%F %R")
+
+# Get battery percentagebattery_percentage
+battery_percentage=$(cat /sys/class/power_supply/BAT0/capacity)
+
+# Fetch memory information
+memory_info=$(free -m)
+
 # Check if memory_info is empty or contains unexpected data
 if [ -z "$memory_info" ] || ! echo "$memory_info" | grep -q "Mem:"; then
         memory_usage="N/A"
@@ -31,6 +41,7 @@ xsetroot -name "$current_time | Memory : $memory_usage% | $battery_percentage%"
 # Sleep for 5 seconds before updating again
 sleep 5
 done &
+
 
 ##################################################################################################################
 
