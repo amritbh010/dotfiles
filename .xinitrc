@@ -92,9 +92,9 @@ fi
 
 /home/void/.local/bin/newlook &
 sxhkd &
-wal -i /home/void/Downloads/wallpaperflare.com_wallpaper.jpg &
+wal -i /home/void/Downloads/123.jpg &
 setsid xcompmgr &
-feh --bg-fill /home/void/Downloads/wallpaperflare.com_wallpaper.jpg &
+feh --bg-fill /home/void/Downloads/123.jpg &
 exec dwm
 
 
