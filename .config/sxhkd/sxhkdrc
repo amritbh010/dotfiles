@@ -12,10 +12,10 @@ alt + m
 
 # Increase brightness
 alt + Right
-    backlight_control +10
+    backlight_control +5
 
 #  Decrease brightness
 alt + Left
-    backlight_control -10
+    backlight_control -5
 
 
