@@ -20,7 +20,7 @@ while true; do
                 time="$(date +"%I:%M %p")"
                 dte="$(date +"%a, %B %d")"
                 battery=$(cat /sys/class/power_supply/BAT0/capacity)
-                xsetroot -name "[ 📅 $dte ][ 🧭$time ][ 📢 $volume ][ 💀 $battery% ]"
+                xsetroot -name "[ 📅 $dte ][ 🧭 $time ][ 📢 $volume ][ 💀 $battery% ]"
 done &
 
 
