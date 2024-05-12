@@ -1,13 +1,13 @@
 # Increase volume
-F12
+alt + 3
     amixer -q sset Master 5%+
 
 # Decrease volume
-F11
+alt + 2
     amixer -q sset Master 5%-
 
 # Mute/unmute volume
-F10
+alt + 1
     amixer -q sset Master toggle
 
 # Increase brightness
