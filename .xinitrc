@@ -5,13 +5,21 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-while true; do
-        clock="$(sh ~/.local/bin/clock)"
-        volume="$(sh ~/.local/bin/volume)"
-        battery="$(sh ~/.local/bin/battery)"
+#while true; do
+#        clock="$(sh ~/.local/bin/clock)"
+#       volume="$(sh ~/.local/bin/volume)"
+#        battery="$(sh ~/.local/bin/battery)"
+#
+#xsetroot -name "$clock | $volume | $battery"
+#sleep 0
+#done &
 
-xsetroot -name "$clock | $volume | $battery"
-sleep 0
+
+while true; do
+                volume=$(amixer get Master | grep -oE '[0-9]{1,3}?%' | head -n1)
+                dte="$(date +"%a, %B %d %l:%M%p"| sed 's/  / /g')"
+                battery=$(cat /sys/class/power_supply/BAT0/capacity)
+                xsetroot -name "[ $dte ][ $volume ][ $battery% ]"
 done &
 
 
