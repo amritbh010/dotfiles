@@ -17,10 +17,12 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 while true; do
                 volume=$(amixer get Master | grep -oE '[0-9]{1,3}?%' | head -n1)
-                dte="$(date +"%a, %B %d %l:%M%p"| sed 's/  / /g')"
+                time="$(date +"%l:%M%p")"
+                dte="$(date +"%a, %B %d")"
                 battery=$(cat /sys/class/power_supply/BAT0/capacity)
-                xsetroot -name "[ $dte ][ $volume ][ $battery% ]"
+                xsetroot -name "[ 📅 $dte ][ 🧭$time ][ 📢 $volume ][ 💀 $battery% ]"
 done &
+
 
 
 # merge in defaults and keymaps
